@@ -1,0 +1,107 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { Eye, Volume2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function AccessibilityWidget() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [mode, setMode] = useState<"normal" | "grayscale" | "high-contrast" | "negative">("normal");
+
+  useEffect(() => {
+    // Show tooltip after 2 seconds on first visit
+    const timer = setTimeout(() => setShowTooltip(true), 2000);
+    const hideTimer = setTimeout(() => setShowTooltip(false), 10000);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Bersihkan kelas lama
+    const html = document.documentElement;
+    html.classList.remove("grayscale-mode", "high-contrast-mode", "negative-mode");
+    
+    // Tambah kelas baru
+    if (mode === "grayscale") html.classList.add("grayscale-mode");
+    if (mode === "high-contrast") html.classList.add("high-contrast-mode");
+    if (mode === "negative") html.classList.add("negative-mode");
+  }, [mode]);
+
+  const handleTTS = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      const selection = document.getSelection();
+      const text = selection ? selection.toString() : "";
+      const utterance = new SpeechSynthesisUtterance(text || "Silakan blok teks untuk dibacakan.");
+      utterance.lang = "id-ID";
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("Browser Anda tidak mendukung fitur pembaca suara.");
+    }
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50">
+      <AnimatePresence>
+        {showTooltip && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="absolute bottom-16 right-0 bg-blue-600 text-white text-sm p-3 rounded-lg shadow-xl w-48 mb-2"
+          >
+            <p>Klik di sini untuk fitur aksesibilitas (Mode Kontras, Suara, dll).</p>
+            <div className="absolute -bottom-2 right-4 w-4 h-4 bg-blue-600 rotate-45"></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="absolute bottom-16 right-0 bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-4 w-64 mb-2 border border-slate-200 dark:border-slate-700"
+          >
+            <h3 className="font-bold text-slate-800 dark:text-white mb-4 border-b pb-2">Aksesibilitas</h3>
+            
+            <div className="space-y-4">
+              <div>
+                <p className="text-xs font-semibold text-slate-500 mb-2">Visibilitas Layar</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => setMode("normal")} className={`text-xs p-2 rounded ${mode === "normal" ? "bg-blue-100 text-blue-700 font-bold" : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200"}`}>Normal</button>
+                  <button onClick={() => setMode("grayscale")} className={`text-xs p-2 rounded ${mode === "grayscale" ? "bg-blue-100 text-blue-700 font-bold" : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200"}`}>Abu-abu</button>
+                  <button onClick={() => setMode("high-contrast")} className={`text-xs p-2 rounded ${mode === "high-contrast" ? "bg-blue-100 text-blue-700 font-bold" : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200"}`}>Kontras Tinggi</button>
+                  <button onClick={() => setMode("negative")} className={`text-xs p-2 rounded ${mode === "negative" ? "bg-blue-100 text-blue-700 font-bold" : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200"}`}>Negatif</button>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-slate-500 mb-2">Pembaca Teks (TTS)</p>
+                <button onClick={handleTTS} className="w-full flex items-center justify-center space-x-2 bg-slate-100 dark:bg-slate-700 p-2 rounded hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-800 dark:text-white">
+                  <Volume2 className="w-4 h-4" />
+                  <span className="text-xs">Bacakan Teks</span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setShowTooltip(false);
+        }}
+        className="w-12 h-12 bg-blue-600 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-blue-700 hover:scale-105 transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 group"
+        aria-label="Aksesibilitas"
+      >
+        <Eye className="w-6 h-6" />
+      </button>
+    </div>
+  );
+}
