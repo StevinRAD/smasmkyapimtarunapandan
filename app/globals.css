@@ -2,11 +2,45 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
+  /* Enhanced Blue Primary Palette */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+
+  /* Primary Colors */
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-500: #3b82f6;
   --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
   --color-primary-900: #1e3a8a;
+
+  /* Accent Colors */
+  --color-accent-blue: #0ea5e9;
+  --color-accent-indigo: #6366f1;
+
+  /* Neutral Colors */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+
+  /* Background & Foreground */
   --color-background: #ffffff;
   --color-foreground: #0f172a;
 }
@@ -17,6 +51,18 @@
     --foreground: 222.2 84% 4.9%;
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -24,6 +70,17 @@
     --foreground: 210 40% 98%;
     --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
   }
 
   /* Accessibility Modes Set via JS class toggle */
@@ -39,9 +96,131 @@
 }
 
 @layer base {
+  * {
+    @apply border-slate-200 dark:border-slate-800;
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    border-color: #e2e8f0;
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+}
+
+/* Custom Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* Professional Section Spacing */
+@layer components {
+  .section-spacious {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .section-standard {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .section-compact {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Professional Card Styles */
+  .card-elevated {
+    @apply bg-white dark:bg-slate-900 rounded-xl shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/60 dark:hover:shadow-slate-900/60;
+  }
+
+  .card-bordered {
+    @apply bg-white dark:bg-slate-900 rounded-xl border-2 border-slate-100 dark:border-slate-800 transition-all duration-300 hover:border-blue-200 dark:hover:border-blue-900;
+  }
+
+  /* Professional Badge Styles */
+  .badge-primary {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+
+  .badge-secondary {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300;
+  }
+
+  /* Gradient Overlays */
+  .gradient-overlay-blue {
+    @apply absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-transparent;
+  }
+
+  .gradient-overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/50 to-transparent;
   }
 }
