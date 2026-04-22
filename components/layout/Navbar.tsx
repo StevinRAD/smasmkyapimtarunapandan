@@ -93,8 +93,8 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <Link href="/fasilitas" className="relative group px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 uppercase tracking-widest">
-                <span className="relative z-10">Fasilitas</span>
+              <Link href="/galeri" className="relative group px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 uppercase tracking-widest">
+                <span className="relative z-10">Galeri</span>
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
               </Link>
 
@@ -259,9 +259,9 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <Link href="/fasilitas" onClick={() => setIsOpen(false)} className="flex items-center py-4 px-4 text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">
-                <span className="w-5 h-5 mr-3 text-purple-600">🏫</span>
-                Fasilitas Sekolah
+              <Link href="/galeri" onClick={() => setIsOpen(false)} className="flex items-center py-4 px-4 text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">
+                <span className="w-5 h-5 mr-3 text-purple-600">🖼️</span>
+                Galeri Sekolah
               </Link>
 
               <Link href="/berita" onClick={() => setIsOpen(false)} className="flex items-center py-4 px-4 text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">

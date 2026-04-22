@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Users, Calendar, Image as ImageIcon, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Users, Calendar, Image as ImageIcon, ArrowRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -27,7 +27,7 @@ const alumniData = [
     year: "2022",
     students: "230 Siswa",
     class: "Angkatan ke-7",
-    image: "/galeri/alumni-2022.jpg",
+    image: "/galeri/angkatan_7.jpg",
     achievements: ["90% Lulus PTN", "28 Juara Prestasi", "97% Berkarir"],
     color: "purple"
   },
@@ -83,6 +83,20 @@ const alumniData = [
 
 export default function ArsipContent() {
   const [selectedYear, setSelectedYear] = useState<string | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [previewTitle, setPreviewTitle] = useState<string>("");
+
+  const openPreview = (image: string, title: string) => {
+    setPreviewImage(image);
+    setPreviewTitle(title);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closePreview = () => {
+    setPreviewImage(null);
+    setPreviewTitle("");
+    document.body.style.overflow = "unset";
+  };
 
   return (
     <div className="min-h-screen bg-transparent">
@@ -181,14 +195,24 @@ export default function ArsipContent() {
               >
                 <div className="card-elevated overflow-hidden h-full">
                   {/* Image */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <div
+                    className="relative aspect-[4/3] w-full overflow-hidden cursor-pointer group/image"
+                    onClick={() => openPreview(alumni.image, `${alumni.class} - ${alumni.year}`)}
+                  >
                     <Image
                       fill
                       src={alumni.image}
                       alt={`Alumni ${alumni.year}`}
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 group-hover/image:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+
+                    {/* Preview Overlay */}
+                    <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm p-4 rounded-full">
+                        <ImageIcon className="w-6 h-6 text-slate-900" />
+                      </div>
+                    </div>
 
                     {/* Year Badge */}
                     <div className="absolute top-4 right-4">
@@ -270,6 +294,55 @@ export default function ArsipContent() {
           </motion.div>
         </div>
       </section>
+
+      {/* Image Preview Modal */}
+      <AnimatePresence>
+        {previewImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-8"
+            onClick={closePreview}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-6xl max-h-screen flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closePreview}
+                className="absolute top-0 right-0 z-10 flex items-center justify-center w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-all duration-300"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Image Container */}
+              <div className="relative w-full max-h-[80vh] flex items-center justify-center">
+                <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-2xl overflow-hidden">
+                  <Image
+                    fill
+                    src={previewImage}
+                    alt={previewTitle}
+                    className="object-contain bg-slate-900/50"
+                  />
+                </div>
+              </div>
+
+              {/* Title */}
+              <div className="text-center mt-6">
+                <h3 className="text-2xl md:text-3xl font-black text-white">{previewTitle}</h3>
+                <p className="text-blue-200 mt-2 text-sm">Klik di mana saja untuk menutup</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
