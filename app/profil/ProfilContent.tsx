@@ -44,24 +44,9 @@ const missions = [
 
 const timelineEvents = [
   {
-    year: "1989",
-    title: "Pendirian YAPIM",
-    description: "YAPIM Taruna Pandan didirikan dengan visi untuk memberikan pendidikan berkualitas di Tapanuli Tengah"
-  },
-  {
-    year: "1995",
-    title: "Pembukaan SMA",
-    description: "Membuka program SMA untuk memenuhi kebutuhan pendidikan menengah di wilayah tersebut"
-  },
-  {
-    year: "2000",
-    title: "Ekspansi ke SMK",
-    description: "Menambah program SMK untuk mencetak lulusan siap kerja dengan keterampilan spesifik"
-  },
-  {
-    year: "2010",
-    title: "Akreditasi B",
-    description: "Mendapatkan akreditasi B sebagai bukti komitmen terhadap kualitas pendidikan"
+    year: "2013",
+    title: "Peresmian Gedung Baru",
+    description: "Gedung sekolah diresmikan pada 16 Mei 2013 oleh Bupati Tapanuli Tengah Raja Bonaran Situmeang, SH, M. Hum"
   },
   {
     year: "2020",

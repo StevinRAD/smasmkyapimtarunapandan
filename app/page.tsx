@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-function Counter({ from, to, duration, suffix = "" }: { from: number; to: number; duration: number, suffix?: string }) {
+function Counter({ from, to, duration, suffix = "" }: { from: number; to: number; duration: number; suffix?: string }) {
   const [count, setCount] = useState(from);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -30,6 +30,55 @@ function Counter({ from, to, duration, suffix = "" }: { from: number; to: number
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
+function PhotoCarousel() {
+  const photos = [
+    { src: "/galeri/kepsek-1.jpg", alt: "Kepala Sekolah", badge: "35+", label: "Tahun Mengabdi" },
+    { src: "/galeri/kegiatan-belajar-1.jpg", alt: "Kegiatan Belajar", badge: "850+", label: "Siswa Aktif" },
+    { src: "/galeri/laboratorium-1.jpg", alt: "Fasilitas Laboratorium", badge: "45", label: "Guru Profesional" },
+    { src: "/galeri/kampus-1.jpg", alt: "Sekolah YAPIM", badge: "A", label: "Akreditasi Unggul" },
+    { src: "/galeri/perpustakaan-1.jpg", alt: "Perpustakaan Digital", badge: "100%", label: "Lulusan Berkualitas" }
+  ];
+
+  // Duplicate photos for seamless infinite scroll (need at least 2 copies for 50% translation)
+  const duplicatedPhotos = [...photos, ...photos];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="relative overflow-hidden"
+    >
+      {/* Auto-scrolling Container */}
+      <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused]">
+        {duplicatedPhotos.map((photo, index) => (
+          <div key={`${photo.alt}-${index}`} className="flex-shrink-0 w-[300px] md:w-[350px] group">
+            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                fill
+                src={photo.src}
+                alt={photo.alt}
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-transparent to-transparent"></div>
+
+              {/* Badge */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                  <div className="text-4xl font-black text-white mb-1">{photo.badge}</div>
+                  <div className="text-xs text-blue-200 uppercase tracking-widest">{photo.label}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const { t } = useLanguage();
 
@@ -37,20 +86,22 @@ export default function Home() {
     <div className="flex flex-col w-full font-sans text-slate-800 dark:text-slate-200 bg-transparent">
 
       {/* Hero Section - Enhanced Modern Design */}
-      <section className="relative w-full min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden bg-transparent mt-20">
+      <section className="relative w-full min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden bg-transparent mt-20">
         {/* Background Image with Overlay */}
-        <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop"
-          alt="Campus Background"
-          fill
-          priority
-          className="object-cover opacity-40 dark:opacity-50"
-        />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/galeri/bg.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-50 dark:opacity-40"
+          />
+        </div>
         {/* Enhanced Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/60 to-slate-900/50 dark:from-blue-950/90 dark:via-slate-900/70 dark:to-slate-950/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-800/50 to-slate-900/40 dark:from-blue-950/85 dark:via-slate-900/60 dark:to-slate-950/50 z-10" />
 
         {/* Animated Pattern Overlay */}
-        <div className="absolute inset-0 z-10 opacity-20">
+        <div className="absolute inset-0 z-10 opacity-20 pointer-events-none">
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)',
             backgroundSize: '40px 40px'
@@ -58,59 +109,85 @@ export default function Home() {
         </div>
 
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="max-w-4xl"
-          >
-            {/* Enhanced Badge */}
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-5 py-2.5 mb-8 rounded-full text-xs md:text-sm uppercase tracking-[0.25em] shadow-2xl animate-fade-in">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></span>
-              {t("hero.badge")}
-            </div>
-
-            {/* Enhanced Typography */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[0.95] tracking-tight uppercase drop-shadow-2xl">
-              {t("hero.title")}
-            </h1>
-
-            <p className="text-xl md:text-2xl text-blue-50/90 dark:text-blue-100/80 mb-12 max-w-3xl leading-relaxed font-medium border-l-4 border-blue-400 pl-6">
-              {t("hero.subtitle")}
-            </p>
-
-            {/* Enhanced CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-5">
-              <Link
-                href="/profil"
-                className="group bg-white text-blue-900 hover:bg-blue-50 px-10 py-5 rounded-xl font-bold text-sm md:text-base transition-all duration-300 shadow-2xl flex items-center justify-center hover:shadow-3xl hover:scale-105 uppercase tracking-widest"
-              >
-                {t("cta.primary")} <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-              </Link>
-              <Link
-                href="/fasilitas"
-                className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-xl font-bold text-sm md:text-base transition-all duration-300 flex items-center justify-center uppercase tracking-widest hover:scale-105"
-              >
-                {t("cta.secondary")}
-              </Link>
-            </div>
-
-            {/* Quick Stats Strip */}
-            <div className="mt-16 grid grid-cols-3 gap-6 max-w-2xl">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-black text-white mb-1">35+</div>
-                <div className="text-xs text-blue-200 uppercase tracking-widest">Tahun Pengalaman</div>
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="flex-1 text-center lg:text-left max-w-xl"
+            >
+              {/* Enhanced Badge */}
+              <div className="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-4 py-2 mb-6 rounded-full text-xs uppercase tracking-[0.2em] shadow-2xl animate-fade-in">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></span>
+                {t("hero.badge")}
               </div>
-              <div className="text-center border-l border-r border-white/20">
-                <div className="text-3xl md:text-4xl font-black text-white mb-1">A</div>
-                <div className="text-xs text-blue-200 uppercase tracking-widest">Akreditasi Unggul</div>
+
+              {/* Enhanced Typography */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight tracking-tight uppercase drop-shadow-2xl">
+                {t("hero.title")}
+              </h1>
+
+              <p className="text-base md:text-lg text-blue-50/90 dark:text-blue-100/80 mb-8 max-w-xl leading-relaxed font-medium border-l-4 border-blue-400 pl-4">
+                {t("hero.subtitle")}
+              </p>
+
+              {/* Enhanced CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+                <Link
+                  href="/profil"
+                  className="group bg-white text-blue-900 hover:bg-blue-50 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300 shadow-2xl flex items-center justify-center hover:shadow-3xl hover:scale-105 uppercase tracking-wider"
+                >
+                  {t("cta.primary")} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                </Link>
+                <Link
+                  href="/fasilitas"
+                  className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center uppercase tracking-wider hover:scale-105"
+                >
+                  {t("cta.secondary")}
+                </Link>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-black text-white mb-1">100%</div>
-                <div className="text-xs text-blue-200 uppercase tracking-widest">Lulusan Berkualitas</div>
+
+              {/* Quick Stats Strip */}
+              <div className="grid grid-cols-3 gap-4 max-w-xl mx-auto lg:mx-0">
+                <div className="text-center">
+                  <div className="text-2xl md:text-3xl font-black text-white mb-1">35+</div>
+                  <div className="text-[10px] md:text-xs text-blue-200 uppercase tracking-widest">Tahun Pengalaman</div>
+                </div>
+                <div className="text-center border-l border-r border-white/20">
+                  <div className="text-2xl md:text-3xl font-black text-white mb-1">A</div>
+                  <div className="text-[10px] md:text-xs text-blue-200 uppercase tracking-widest">Akreditasi Unggul</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl md:text-3xl font-black text-white mb-1">100%</div>
+                  <div className="text-[10px] md:text-xs text-blue-200 uppercase tracking-widest">Lulusan Berkualitas</div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Right - Person Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+              className="flex-shrink-0 w-[22rem] h-[22rem] md:w-[32rem] md:h-[32rem] lg:w-[40rem] lg:h-[40rem] relative -mt-20 lg:-mt-32 translate-x-8 lg:translate-x-16"
+            >
+              <div className="relative w-full h-full">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-blue-600/30 rounded-[40px] blur-3xl animate-pulse"></div>
+                {/* Image Container */}
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src="/galeri/person.bg.png"
+                    alt="Professional Staff"
+                    fill
+                    className="object-contain relative z-10 drop-shadow-2xl"
+                    priority
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
@@ -131,124 +208,53 @@ export default function Home() {
       </section>
 
 
-      {/* Headmaster Welcome / About Section - Enhanced */}
+      {/* Photo Gallery Section - Enhanced */}
       <section className="section-spacious bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-30 dark:opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 75%, #f1f5f9 75%, #f1f5f9), linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 75%, #f1f5f9 75%, #f1f5f9)',
-            backgroundSize: '60px 60px',
-            backgroundPosition: '0 0, 30px 30px'
-          }}></div>
+        {/* Background Image - Hanya di Dark Mode */}
+        <div className="absolute inset-0 hidden dark:block">
+          <Image
+            src="/galeri/sekolah-2.jpg"
+            alt=""
+            fill
+            className="object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-950/90"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
-            {/* Enhanced Image Section */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full lg:w-5/12"
-            >
-              <div className="relative">
-                {/* Main Image with Enhanced Frame */}
-                <div className="aspect-[3/4] md:aspect-[4/5] w-full max-w-[450px] mx-auto relative rounded-2xl overflow-hidden z-10 shadow-2xl shadow-slate-300/50 dark:shadow-slate-900/50">
-                  <Image
-                    fill
-                    src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?q=80&w=1000&auto=format&fit=crop"
-                    alt="Kepala Sekolah"
-                    className="object-cover hover:scale-105 transition-all duration-700"
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent"></div>
-                </div>
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-bold text-xs uppercase tracking-[0.2em] rounded-full mb-4">
+              Galeri Sekolah
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-4">
+              Jelajahi Lingkungan Sekolah Kami
+            </h2>
+          </motion.div>
 
-                {/* Enhanced Accent Decor elements */}
-                <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl -z-10 hidden md:block shadow-xl shadow-blue-500/30"></div>
-                <div className="absolute top-8 -right-8 w-72 h-72 border-4 border-blue-200 dark:border-blue-900 rounded-2xl -z-10 hidden md:block"></div>
-
-                {/* Floating Badge */}
-                <div className="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 rounded-xl shadow-xl p-4 hidden md:block animate-float">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
-                      <Award className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-black text-slate-900 dark:text-white">35+</div>
-                      <div className="text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wider">Tahun Mengabdi</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Enhanced Content Section */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full lg:w-7/12"
-            >
-              <div className="flex flex-col">
-                {/* Enhanced Badge */}
-                <div className="flex items-center space-x-3 mb-6">
-                  <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-bold text-xs uppercase tracking-[0.2em] rounded-full">
-                    {t("welcome.badge")}
-                  </span>
-                  <div className="h-px flex-1 bg-gradient-to-r from-blue-200 to-transparent dark:from-blue-800"></div>
-                </div>
-
-                {/* Enhanced Heading */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tight uppercase leading-[1.1]">
-                  {t("welcome.title")}
-                </h2>
-
-                {/* Enhanced Decorative Line */}
-                <div className="flex items-center space-x-4 mb-10">
-                  <div className="h-1.5 w-16 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full"></div>
-                  <div className="h-1.5 w-8 bg-gradient-to-r from-blue-400 to-transparent rounded-full"></div>
-                </div>
-
-                {/* Enhanced Quote */}
-                <div className="bg-gradient-to-r from-blue-50 to-slate-50 dark:from-blue-950/30 dark:to-slate-900/30 border-l-4 border-blue-600 p-6 rounded-r-xl mb-8">
-                  <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium italic">
-                    &quot;{t("welcome.quote")}&quot;
-                  </p>
-                </div>
-
-                {/* Enhanced Description */}
-                <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-lg">
-                  {t("welcome.subtitle")}
-                </p>
-
-                {/* Enhanced Signature */}
-                <div className="flex items-center space-x-6 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center">
-                    <GraduationCap className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-wider">{t("welcome.name")}</span>
-                    <span className="text-sm font-bold text-blue-700 dark:text-blue-400 uppercase tracking-[0.15em]">{t("welcome.role")}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          {/* Photo Carousel with Infinite Loop */}
+          <PhotoCarousel />
         </div>
       </section>
 
       {/* Stats Board - Enhanced Modern Design */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 text-white py-24 overflow-hidden">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 opacity-20" style={{
-            backgroundImage: 'radial-gradient(circle at 3px 3px, rgba(255,255,255,0.4) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-            animation: 'pan 20s linear infinite'
-          }}></div>
+        {/* Background Image - Guru & Staff */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/galeri/guru_guru.JPG"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={100}
+            className="object-cover opacity-20"
+            priority
+          />
         </div>
 
         {/* Gradient Overlay */}
@@ -339,9 +345,14 @@ export default function Home() {
                 Tetap update dengan informasi terbaru seputar kegiatan akademik, prestasi siswa, dan pengumuman penting dari sekolah
               </p>
             </div>
-            <Link href="/berita" className="hidden md:flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider text-sm transition rounded-xl group mt-6 md:mt-0">
-              Lihat Seluruh Arsip <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition" />
-            </Link>
+            <div className="flex gap-4 mt-6 md:mt-0">
+              <Link href="/arsip" className="hidden md:flex items-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase tracking-wider text-sm transition rounded-xl group">
+                Arsip
+              </Link>
+              <Link href="/berita" className="hidden md:flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider text-sm transition rounded-xl group">
+                Lihat Seluruh Arsip <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition" />
+              </Link>
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -357,7 +368,7 @@ export default function Home() {
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
                   <Image
                     fill
-                    src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format&fit=crop"
+                    src="/galeri/berita-utama.jpg"
                     alt="News 1"
                     className="object-cover transform group-hover:scale-110 transition duration-700"
                   />
@@ -398,7 +409,7 @@ export default function Home() {
             <div className="lg:col-span-5 flex flex-col space-y-6">
               {[
                 {
-                  image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop",
+                  image: "/galeri/berita-prestasi.jpg",
                   category: "Prestasi",
                   categoryColor: "emerald",
                   title: "Siswa YAPIM Juara 1 Olimpiade Sains Tingkat Provinsi",
@@ -406,7 +417,7 @@ export default function Home() {
                   date: "10 April 2026"
                 },
                 {
-                  image: "https://images.unsplash.com/photo-1544207959-1e3c5098ff99?q=80&w=600&auto=format&fit=crop",
+                  image: "/galeri/berita-perayaan.jpg",
                   category: "Kegiatan",
                   categoryColor: "purple",
                   title: "Semarak Perayaan Hari Ulang Tahun YAPIM Ke-35",
@@ -414,7 +425,7 @@ export default function Home() {
                   date: "02 April 2026"
                 },
                 {
-                  image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop",
+                  image: "/galeri/berita-akademik.jpg",
                   category: "Akademik",
                   categoryColor: "blue",
                   title: "Sosialisasi Kurikulum Nasional Terbaru kepada Wali Murid",
@@ -441,7 +452,10 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col py-1 flex-1">
-                      <span className={`text-xs font-bold bg-${post.categoryColor}-100 dark:bg-${post.categoryColor}-900/30 text-${post.categoryColor}-700 dark:text-${post.categoryColor}-400 px-3 py-1 rounded-full uppercase tracking-wider w-max mb-3`}>
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider w-max mb-3 ${post.categoryColor === "emerald" ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400" :
+                        post.categoryColor === "purple" ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400" :
+                          "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400"
+                        }`}>
                         {post.category}
                       </span>
 
@@ -471,35 +485,42 @@ export default function Home() {
 
 
       {/* Enhanced Video / Campus Life Section */}
-      <section className="relative section-spacious flex items-center justify-center overflow-hidden">
+      <section className="relative section-spacious overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop"
-          alt="Video Thumbnail"
+          src="/galeri/fasilitas-bg.jpg"
+          alt=""
           fill
-          className="object-cover"
+          className="object-cover opacity-60 dark:opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-slate-900/80 to-blue-900/90 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-slate-900/60 to-blue-900/80 dark:from-blue-950/85 dark:via-slate-900/70 dark:to-blue-950/85 z-10"></div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative z-20 text-center px-4 max-w-4xl mx-auto"
+          className="relative z-20 px-4 max-w-6xl mx-auto"
         >
-          <button className="w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl flex items-center justify-center mx-auto mb-10 cursor-pointer hover:scale-110 transition-transform shadow-2xl group">
-            <div className="absolute inset-0 bg-blue-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <Play className="w-10 h-10 md:w-12 md:h-12 text-blue-600 relative z-10 group-hover:text-white transition-colors duration-300 ml-1" />
-          </button>
+          <div className="text-center mb-12">
+            <span className="text-blue-300 font-bold tracking-widest uppercase text-sm mb-6 block">Tur Sekolah Virtual</span>
 
-          <span className="text-blue-300 font-bold tracking-widest uppercase text-sm mb-6 block">Tur Kampus Virtual</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white max-w-3xl mx-auto leading-tight mb-6">
+              Jelajahi Lingkungan Belajar Kami yang Menginspirasi
+            </h2>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white max-w-3xl mx-auto leading-tight mb-6">
-            Jelajahi Lingkungan Belajar Kami yang Menginspirasi
-          </h2>
+            <p className="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+              Dapatkan pengalaman langsung melihat fasilitas modern, ruang kelas yang nyaman, dan lingkungan belajar yang kondusif untuk pengembangan potensi siswa
+            </p>
+          </div>
 
-          <p className="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Dapatkan pengalaman langsung melihat fasilitas modern, ruang kelas yang nyaman, dan lingkungan belajar yang kondusif untuk pengembangan potensi siswa
-          </p>
+          <div className="relative aspect-video w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-10">
+            <iframe
+              src="https://www.youtube.com/embed/8gxXqwaFDJ8"
+              title="Tur Sekolah Virtual SMA-SMKS YAPIM Taruna Pandan"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/fasilitas" className="inline-flex items-center px-8 py-4 bg-white text-blue-900 font-bold uppercase tracking-wider text-sm transition rounded-xl hover:bg-blue-50">
@@ -517,7 +538,7 @@ export default function Home() {
       <section className="section-standard bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 opacity-10" style={{
+          <div className="absolute inset-0 opacity-10 dark:opacity-5" style={{
             backgroundImage: 'radial-gradient(circle at 4px 4px, rgba(255,255,255,0.5) 1px, transparent 0)',
             backgroundSize: '48px 48px'
           }}></div>
@@ -620,8 +641,20 @@ export default function Home() {
                 className="group"
               >
                 <div className="card-elevated p-8 h-full hover:border-blue-200 dark:hover:border-blue-900">
-                  <div className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <feature.icon className={`w-8 h-8 text-${feature.color}-600 dark:text-${feature.color}-400`} />
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${feature.color === "blue" ? "bg-blue-100 dark:bg-blue-900/30" :
+                    feature.color === "emerald" ? "bg-emerald-100 dark:bg-emerald-900/30" :
+                      feature.color === "purple" ? "bg-purple-100 dark:bg-purple-900/30" :
+                        feature.color === "amber" ? "bg-amber-100 dark:bg-amber-900/30" :
+                          feature.color === "rose" ? "bg-rose-100 dark:bg-rose-900/30" :
+                            "bg-cyan-100 dark:bg-cyan-900/30"
+                    }`}>
+                    <feature.icon className={`w-8 h-8 ${feature.color === "blue" ? "text-blue-600 dark:text-blue-400" :
+                      feature.color === "emerald" ? "text-emerald-600 dark:text-emerald-400" :
+                        feature.color === "purple" ? "text-purple-600 dark:text-purple-400" :
+                          feature.color === "amber" ? "text-amber-600 dark:text-amber-400" :
+                            feature.color === "rose" ? "text-rose-600 dark:text-rose-400" :
+                              "text-cyan-600 dark:text-cyan-400"
+                      }`} />
                   </div>
 
                   <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">

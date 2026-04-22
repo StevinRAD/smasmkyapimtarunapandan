@@ -18,8 +18,8 @@ const staffData = [
   // Pimpinan
   {
     id: 1,
-    name: "Parunggulan Tobing, S.Pd",
-    position: "Kepala Sekolah",
+    name: "Parunggulan Tobing, B.Min",
+    position: "Kepala Sekolah SMA-SMK",
     department: "pimpinan",
     departmentName: "Pimpinan",
     education: "S1 Pendidikan - Universitas Negeri Medan",
@@ -36,8 +36,8 @@ const staffData = [
   },
   {
     id: 2,
-    name: "Drs. Suryanto Damanik",
-    position: "Wakil Kepala Sekolah Bidang Kurikulum",
+    name: "-",
+    position: "-",
     department: "pimpinan",
     departmentName: "Pimpinan",
     education: "S2 Pendidikan - Universitas Negeri Medan",
@@ -54,7 +54,7 @@ const staffData = [
   },
   {
     id: 3,
-    name: "Maria Br. Sembiring, S.Pd, M.Pd",
+    name: "-",
     position: "Wakil Kepala Sekolah Bidang Kesiswaan",
     department: "pimpinan",
     departmentName: "Pimpinan",
@@ -70,10 +70,46 @@ const staffData = [
       "Kesiswaan"
     ]
   },
+  {
+    id: 4,
+    name: "Mantrika Ginting, S.Kom",
+    position: "Kepala Jurusan TKJ",
+    department: "pimpinan",
+    departmentName: "Pimpinan",
+    education: "S1 Manajemen Pendidikan - Universitas Negeri Medan",
+    experience: "18 Tahun",
+    nip: "197511152000122001",
+    email: "wakilsiswa@yapim-pandan.sch.id",
+    phone: "081234567892",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    expertise: [
+      "Bimbingan Konseling",
+      "Pengembangan Karakter",
+      "Kesiswaan"
+    ]
+  },
+  {
+    id: 5,
+    name: "-",
+    position: "Kepala Jurusan TKR",
+    department: "pimpinan",
+    departmentName: "Pimpinan",
+    education: "S1 Manajemen Pendidikan - Universitas Negeri Medan",
+    experience: "18 Tahun",
+    nip: "197511152000122001",
+    email: "wakilsiswa@yapim-pandan.sch.id",
+    phone: "081234567892",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    expertise: [
+      "Bimbingan Konseling",
+      "Pengembangan Karakter",
+      "Kesiswaan"
+    ]
+  },
   // Guru SMA
   {
     id: 4,
-    name: "Drs. Budi Santoso",
+    name: "-",
     position: "Guru Matematika",
     department: "guru-sma",
     departmentName: "Guru SMA",
@@ -91,7 +127,7 @@ const staffData = [
   },
   {
     id: 5,
-    name: "Dra. Sri Wahyuni, M.Si",
+    name: "-",
     position: "Guru Biologi",
     department: "guru-sma",
     departmentName: "Guru SMA",
@@ -109,7 +145,7 @@ const staffData = [
   },
   {
     id: 6,
-    name: "Ahmad Fauzi, S.Pd, M.Hum",
+    name: "-",
     position: "Guru Bahasa Inggris",
     department: "guru-sma",
     departmentName: "Guru SMA",
@@ -128,7 +164,7 @@ const staffData = [
   // Guru SMK
   {
     id: 7,
-    name: "Ir. Hendra Wijaya, M.Kom",
+    name: "-",
     position: "Guru Produktif RPL",
     department: "guru-smk",
     departmentName: "Guru SMK",
@@ -146,7 +182,7 @@ const staffData = [
   },
   {
     id: 8,
-    name: "Rudi Hartono, S.T",
+    name: "-",
     position: "Guru Produktif TKR",
     department: "guru-smk",
     departmentName: "Guru SMK",
@@ -164,7 +200,7 @@ const staffData = [
   },
   {
     id: 9,
-    name: "Maya Sari, S.E, Ak",
+    name: "-",
     position: "Guru Produktif AKL",
     department: "guru-smk",
     departmentName: "Guru SMK",
@@ -183,7 +219,7 @@ const staffData = [
   // Staff
   {
     id: 10,
-    name: "Bambang Sutrisno",
+    name: "-",
     position: "Kepala Tata Usaha",
     department: "staff",
     departmentName: "Staff",
@@ -201,7 +237,7 @@ const staffData = [
   },
   {
     id: 11,
-    name: "Rina Marlina, A.Md",
+    name: "-",
     position: "Staff Perpustakaan",
     department: "staff",
     departmentName: "Staff",
@@ -219,7 +255,7 @@ const staffData = [
   },
   {
     id: 12,
-    name: "Agus Prasetyo, S.Kom",
+    name: "-",
     position: "Staff IT",
     department: "staff",
     departmentName: "Staff",
@@ -257,13 +293,13 @@ export default function StafContent() {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-transparent mt-20">
         <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop"
+          src="/galeri/guru_guru.JPG"
           alt="Guru & Staff"
           fill
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-emerald-800/70 to-slate-900/60 dark:from-emerald-950/95 dark:via-slate-900/80 dark:to-emerald-950/90 z-10"></div>
+        <div className="absolute inset-0 bg-black/50 z-10"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -325,11 +361,10 @@ export default function StafContent() {
               <button
                 key={dept.id}
                 onClick={() => setActiveDepartment(dept.id)}
-                className={`flex items-center px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
-                  activeDepartment === dept.id
-                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/20'
-                }`}
+                className={`flex items-center px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 ${activeDepartment === dept.id
+                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/20'
+                  }`}
               >
                 <dept.icon className="w-4 h-4 mr-2" />
                 {dept.name}

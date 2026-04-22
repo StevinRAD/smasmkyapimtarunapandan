@@ -164,7 +164,7 @@ export default function BeritaContent() {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-transparent mt-20">
         <Image
-          src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop"
+          src="/galeri/berita_bg.jpg"
           alt="News"
           fill
           priority

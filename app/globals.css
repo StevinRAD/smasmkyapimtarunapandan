@@ -181,6 +181,20 @@
       transform: scale(1);
     }
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+    width: max-content;
+  }
 }
 
 /* Professional Section Spacing */

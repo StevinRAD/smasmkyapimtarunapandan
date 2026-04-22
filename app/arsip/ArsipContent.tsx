@@ -1,0 +1,275 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Users, Calendar, Image as ImageIcon, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+const alumniData = [
+  {
+    year: "2024",
+    students: "245 Siswa",
+    class: "Angkatan ke-9",
+    image: "/galeri/alumni-2024.jpg",
+    achievements: ["95% Lulus PTN", "25 Juara Prestasi", "100% Berkarir"],
+    color: "blue"
+  },
+  {
+    year: "2023",
+    students: "238 Siswa",
+    class: "Angkatan ke-8",
+    image: "/galeri/alumni-2023.jpg",
+    achievements: ["92% Lulus PTN", "30 Juara Prestasi", "98% Berkarir"],
+    color: "emerald"
+  },
+  {
+    year: "2022",
+    students: "230 Siswa",
+    class: "Angkatan ke-7",
+    image: "/galeri/alumni-2022.jpg",
+    achievements: ["90% Lulus PTN", "28 Juara Prestasi", "97% Berkarir"],
+    color: "purple"
+  },
+  {
+    year: "2021",
+    students: "225 Siswa",
+    class: "Angkatan ke-6",
+    image: "/galeri/alumni-2021.jpg",
+    achievements: ["88% Lulus PTN", "22 Juara Prestasi", "95% Berkarir"],
+    color: "amber"
+  },
+  {
+    year: "2020",
+    students: "218 Siswa",
+    class: "Angkatan ke-5",
+    image: "/galeri/alumni-2020.jpg",
+    achievements: ["85% Lulus PTN", "20 Juara Prestasi", "94% Berkarir"],
+    color: "rose"
+  },
+  {
+    year: "2019",
+    students: "210 Siswa",
+    class: "Angkatan ke-4",
+    image: "/galeri/alumni-2019.jpg",
+    achievements: ["82% Lulus PTN", "18 Juara Prestasi", "92% Berkarir"],
+    color: "cyan"
+  },
+  {
+    year: "2018",
+    students: "205 Siswa",
+    class: "Angkatan ke-3",
+    image: "/galeri/alumni-2018.jpg",
+    achievements: ["80% Lulus PTN", "15 Juara Prestasi", "90% Berkarir"],
+    color: "indigo"
+  },
+  {
+    year: "2017",
+    students: "198 Siswa",
+    class: "Angkatan ke-2",
+    image: "/galeri/alumni-2017.jpg",
+    achievements: ["78% Lulus PTN", "12 Juara Prestasi", "88% Berkarir"],
+    color: "orange"
+  },
+  {
+    year: "2016",
+    students: "192 Siswa",
+    class: "Angkatan ke-1",
+    image: "/galeri/alumni-2016.jpg",
+    achievements: ["75% Lulus PTN", "10 Juara Prestasi", "85% Berkarir"],
+    color: "teal"
+  }
+];
+
+export default function ArsipContent() {
+  const [selectedYear, setSelectedYear] = useState<string | null>(null);
+
+  return (
+    <div className="min-h-screen bg-transparent">
+      {/* Hero Section */}
+      <section className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden bg-transparent mt-20">
+        <Image
+          src="/galeri/alumni_bg.jpg"
+          alt="Arsip Alumni"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-slate-900/60 dark:from-blue-950/95 dark:via-slate-900/80 dark:to-blue-950/90 z-10"></div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 text-center"
+        >
+          <div className="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-6 py-3 mb-8 rounded-full text-sm uppercase tracking-[0.2em]">
+            <Users className="w-5 h-5 mr-3" />
+            Arsip Alumni
+          </div>
+
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight tracking-tight uppercase">
+            Galeri Alumni
+          </h1>
+
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-medium">
+            Kenangan bersama para alumni yang telah sukses dan mengharumkan nama sekolah
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="section-standard bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 4px 4px, rgba(255,255,255,0.5) 1px, transparent 0)',
+            backgroundSize: '48px 48px'
+          }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">9</div>
+              <div className="text-blue-200 text-sm uppercase tracking-widest">Angkatan</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">2,000+</div>
+              <div className="text-blue-200 text-sm uppercase tracking-widest">Total Alumni</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">85%</div>
+              <div className="text-blue-200 text-sm uppercase tracking-widest">Lulus PTN</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">100%</div>
+              <div className="text-blue-200 text-sm uppercase tracking-widest">Berkarir Sukses</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Alumni Grid */}
+      <section className="section-spacious bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-bold text-xs uppercase tracking-[0.2em] rounded-full mb-4">
+              Kenangan
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6">
+              Foto Bersama Per Angkatan
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+              Dokumentasi foto wisuda setiap angkatan sebagai kenangan tak terlupakan
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {alumniData.map((alumni, index) => (
+              <motion.div
+                key={alumni.year}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="card-elevated overflow-hidden h-full">
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      fill
+                      src={alumni.image}
+                      alt={`Alumni ${alumni.year}`}
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+
+                    {/* Year Badge */}
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg">
+                        <div className="text-2xl font-black text-slate-900">{alumni.year}</div>
+                      </div>
+                    </div>
+
+                    {/* Class Badge */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                        <div className="text-white font-bold text-lg mb-1">{alumni.class}</div>
+                        <div className="text-blue-200 text-sm">{alumni.students}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 flex items-center">
+                      <Calendar className="w-5 h-5 mr-2 text-blue-600" />
+                      Angkatan {alumni.year}
+                    </h3>
+
+                    <div className="space-y-2 mb-4">
+                      <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center">
+                        <ImageIcon className="w-4 h-4 mr-2" />
+                        {alumni.students}
+                      </p>
+                    </div>
+
+                    <div className="space-y-2">
+                      {alumni.achievements.map((achievement, i) => (
+                        <div key={i} className="flex items-center text-sm">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full mr-2 flex-shrink-0"></div>
+                          <span className="text-slate-700 dark:text-slate-300">{achievement}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-standard bg-gradient-to-r from-emerald-600 to-emerald-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 4px 4px, rgba(255,255,255,0.5) 1px, transparent 0)',
+            backgroundSize: '48px 48px'
+          }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6">
+              Ingin Menjadi Bagian dari Alumni Kami?
+            </h2>
+            <p className="text-emerald-100 text-lg md:text-xl max-w-3xl mx-auto mb-10">
+              Bergabunglah dengan ribuan alumni sukses dan jadilah bagian dari generasi unggul
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+              <Link href="/ppdb" className="inline-flex items-center px-10 py-5 bg-white text-emerald-900 font-bold uppercase tracking-wider text-sm md:text-base transition rounded-xl hover:bg-emerald-50 shadow-2xl group">
+                Daftar Sekarang <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition" />
+              </Link>
+              <Link href="/kontak" className="inline-flex items-center px-10 py-5 bg-transparent border-2 border-white text-white font-bold uppercase tracking-wider text-sm md:text-base transition rounded-xl hover:bg-white hover:text-emerald-900">
+                Hubungi Kami
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

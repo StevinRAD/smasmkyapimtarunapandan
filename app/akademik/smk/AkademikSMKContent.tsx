@@ -17,16 +17,6 @@ const competencies = [
     certification: "MikroTik Certified Network Associate (MTCNA)"
   },
   {
-    name: "RPL",
-    nameFull: "Rekayasa Perangkat Lunak",
-    icon: Database,
-    color: "purple",
-    description: "Mengembangkan aplikasi desktop, web, dan mobile dengan berbagai bahasa pemrograman modern dan framework terkini",
-    skills: ["JavaScript/TypeScript", "React/Next.js", "PHP/Laravel", "Python", "Mobile Dev"],
-    industry: ["Startup", "Software House", "Tech Company", "Freelance", "Product Studio"],
-    certification: "Junior Web Developer (BNSP)"
-  },
-  {
     name: "TKR",
     nameFull: "Teknik Kendaraan Ringan",
     icon: Car,
@@ -35,36 +25,6 @@ const competencies = [
     skills: ["Engine Tune-Up", "Brake System", "Electrical", "Suspension", "Diagnostic Tool"],
     industry: ["Dealer Resmi", "Bengkel Modern", "Fleet Management", "Otomotif Shop", "Wirausaha"],
     certification: "Teknik Kendaraan Ringan (BNSP)"
-  },
-  {
-    name: "TBSM",
-    nameFull: "Teknik Bisnis Sepeda Motor",
-    icon: Wrench,
-    color: "orange",
-    description: "Menguasai perawatan, modifikasi, dan manajemen bisnis sepeda motor dengan keterampilan mekanik dan kewirausahaan",
-    skills: ["Motor Tune-Up", "Overhaul Mesin", "Modifikasi", "Bengkel Management", "Customer Service"],
-    industry: ["Bengkel Motor", "Dealer Honda/Yamaha", "Racing Team", "Wirausaha Bengkel", "Parts Shop"],
-    certification: "Teknik Sepeda Motor (BNSP)"
-  },
-  {
-    name: "AKL",
-    nameFull: "Akuntansi & Keuangan Lembaga",
-    icon: Building2,
-    color: "emerald",
-    description: "Menguasai akuntansi, perpajakan, dan manajemen keuangan lembaga dengan aplikasi komputerisasi modern",
-    skills: ["Akuntansi", "Pajak", "MYOB/Zahir", "Excel", "Audit Laporan"],
-    industry: ["KAP", "Perusahaan Multinasional", "Bank", "Tax Consultant", "Finance Dept"],
-    certification: "Junior Auditor (BNSP)"
-  },
-  {
-    name: "Kuliner",
-    nameFull: "Tata Boga & Kuliner",
-    icon: Utensils,
-    color: "amber",
-    description: "Menguasai seni memasak, pastry, dan manajemen usaha kuliner untuk karir di industri hospitality dan wirausaha",
-    skills: ["Cooking", "Pastry & Bakery", "Food Costing", "HACCP", "Kitchen Management"],
-    industry: ["Hotel Berbintang", "Restoran", "Catering", "Wirausaha Kuliner", "Cruise Line"],
-    certification: "Chef Junior (BNSP)"
   }
 ];
 
@@ -94,10 +54,7 @@ const programFeatures = [
 const partnerLogos = [
   { name: "MikroTik", category: "TKJ" },
   { name: "Cisco", category: "TKJ" },
-  { name: "Microsoft", category: "RPL" },
-  { name: "Honda", category: "TKR" },
-  { name: "Yamaha", category: "TBSM" },
-  { name: "Accurate", category: "AKL" }
+  { name: "Honda", category: "TKR" }
 ];
 
 const achievements = [
@@ -113,13 +70,13 @@ export default function AkademikSMKContent() {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-transparent mt-20">
         <Image
-          src="https://images.unsplash.com/photo-1581092921461-eab62e97a78f?q=80&w=2070&auto=format&fit=crop"
+          src="/galeri/smk_tkj.JPG"
           alt="SMK Students"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-bottom"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-emerald-800/70 to-slate-900/60 dark:from-emerald-950/95 dark:via-slate-900/80 dark:to-emerald-950/90 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/70 via-slate-900/60 to-emerald-900/70 z-10"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -162,7 +119,7 @@ export default function AkademikSMKContent() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {competencies.map((competency, index) => (
               <motion.div
                 key={index}

@@ -121,8 +121,12 @@ export default function Navbar() {
                         <Users className="w-4 h-4 mr-3 text-emerald-600" />
                         Guru & Staff
                       </Link>
-                      <Link href="/alumni" className="flex items-center px-3 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all rounded-lg">
+                      <Link href="/arsip" className="flex items-center px-3 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all rounded-lg">
                         <Award className="w-4 h-4 mr-3 text-purple-600" />
+                        Arsip Alumni
+                      </Link>
+                      <Link href="/alumni" className="flex items-center px-3 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all rounded-lg">
+                        <GraduationCap className="w-4 h-4 mr-3 text-blue-600" />
                         Alumni & Karir
                       </Link>
                     </div>
@@ -143,35 +147,70 @@ export default function Navbar() {
                 Hubungi
               </Link>
 
-              {/* Enhanced Language Switcher */}
-              <button
+              {/* Enhanced Language Switcher with Animation */}
+              <motion.button
                 onClick={() => setLanguage(language === "id" ? "en" : "id")}
-                className="flex items-center justify-center w-9 h-9 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center w-9 h-9 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-300 overflow-hidden relative"
                 title="Ubah Bahasa"
               >
-                <span className="text-[10px] font-black uppercase tracking-widest">
-                  {language === "id" ? "ID" : "EN"}
-                </span>
-              </button>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={language}
+                    initial={{ y: -20, opacity: 0, rotateX: -90 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    exit={{ y: 20, opacity: 0, rotateX: 90 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-[10px] font-black uppercase tracking-widest block"
+                  >
+                    {language === "id" ? "ID" : "EN"}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.button>
 
-              {/* Enhanced Theme Toggle */}
-              <button
+              {/* Enhanced Theme Toggle with Animation */}
+              <motion.button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="flex items-center justify-center w-9 h-9 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center w-9 h-9 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-300 overflow-hidden relative"
                 title="Ubah Tema"
               >
-                {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              </button>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={theme}
+                    initial={{ rotate: -180, opacity: 0, scale: 0 }}
+                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                    exit={{ rotate: 180, opacity: 0, scale: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                  </motion.div>
+                </AnimatePresence>
+              </motion.button>
             </div>
 
             {/* Enhanced Mobile Toggle */}
             <div className="lg:hidden flex items-center space-x-2">
-              <button
+              <motion.button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 rounded-lg transition-all"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 rounded-lg transition-all overflow-hidden relative"
               >
-                {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={theme}
+                    initial={{ rotate: -180, opacity: 0, scale: 0 }}
+                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                    exit={{ rotate: 180, opacity: 0, scale: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                  </motion.div>
+                </AnimatePresence>
+              </motion.button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2.5 text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 rounded-lg transition-all hover:bg-blue-50 dark:hover:bg-blue-900/20"
@@ -237,6 +276,7 @@ export default function Navbar() {
                 </span>
                 <div className="flex flex-col pl-8 space-y-1">
                   <Link href="/staf" onClick={() => setIsOpen(false)} className="py-2.5 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 uppercase tracking-widest">Guru & Staff</Link>
+                  <Link href="/arsip" onClick={() => setIsOpen(false)} className="py-2.5 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 uppercase tracking-widest">Arsip Alumni</Link>
                   <Link href="/alumni" onClick={() => setIsOpen(false)} className="py-2.5 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 uppercase tracking-widest">Alumni & Karir</Link>
                   <Link href="/ppdb" onClick={() => setIsOpen(false)} className="py-2.5 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 uppercase tracking-widest">PPDB Online</Link>
                 </div>
@@ -244,17 +284,35 @@ export default function Navbar() {
 
               <div className="flex items-center justify-between py-4 px-4 mt-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">Bahasa</span>
-                <button
+                <motion.button
                   onClick={() => setLanguage(language === "id" ? "en" : "id")}
-                  className="flex items-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden relative"
                 >
-                  <span className="text-xs font-black uppercase tracking-widest bg-blue-600 text-white px-2 py-1 rounded mr-2">
+                  <motion.span
+                    key={`badge-${language}`}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-xs font-black uppercase tracking-widest bg-blue-600 text-white px-2 py-1 rounded mr-2"
+                  >
                     {language === "id" ? "ID" : "EN"}
-                  </span>
-                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    {language === "id" ? "Indonesia" : "English"}
-                  </span>
-                </button>
+                  </motion.span>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={`text-${language}`}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 20, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-xs font-bold text-slate-700 dark:text-slate-300"
+                    >
+                      {language === "id" ? "Indonesia" : "English"}
+                    </motion.span>
+                  </AnimatePresence>
+                </motion.button>
               </div>
             </div>
           </motion.div>

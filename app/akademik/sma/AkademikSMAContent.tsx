@@ -23,15 +23,6 @@ const programs = [
     description: "Memahami dinamika sosial, ekonomi, dan sejarah untuk persiapan bidang hukum, ekonomi, dan ilmu sosial lainnya",
     subjects: ["Sosiologi", "Ekonomi", "Geografi", "Sejarah", "Bahasa Inggris"],
     career: ["Pengacara", "Ekonom", "Sosiolog", "Diplomat", "Akademisi"]
-  },
-  {
-    name: "Bahasa",
-    nameFull: "Ilmu Bahasa & Budaya",
-    icon: Globe,
-    color: "purple",
-    description: "Mengembangkan kompetensi bahasa dan sastra serta pemahaman lintas budaya untuk karir internasional",
-    subjects: ["Bahasa Inggris", "Bahasa Indonesia", "Sastra", "Antropologi", "Seni Budaya"],
-    career: ["Penerjemah", "Diplomat", "Jurnalis", "Guru Bahasa", "Penulis"]
   }
 ];
 
@@ -77,11 +68,11 @@ export default function AkademikSMAContent() {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-transparent mt-20">
         <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop"
+          src="/galeri/sma_bg.JPG"
           alt="SMA Students"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-slate-900/60 dark:from-blue-950/95 dark:via-slate-900/80 dark:to-blue-950/90 z-10"></div>
 
@@ -122,11 +113,11 @@ export default function AkademikSMAContent() {
               Pilihan Jurusan
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
-              Tiga peminatan studi dengan kurikulum terstruktur untuk mempersiapkan siswa menuju perguruan tinggi impian
+              Dua peminatan studi dengan kurikulum terstruktur untuk mempersiapkan siswa menuju perguruan tinggi impian
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {programs.map((program, index) => (
               <motion.div
                 key={index}

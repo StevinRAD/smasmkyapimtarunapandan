@@ -42,7 +42,7 @@ export default function Footer() {
   const quickLinks = [
     { href: "/profil", label: "Profil Institusi" },
     { href: "/akademik", label: "Informasi Akademik" },
-    { href: "/fasilitas", label: "Fasilitas Kampus" },
+    { href: "/fasilitas", label: "Fasilitas Sekolah" },
     { href: "/berita", label: "Pusat Berita" },
     { href: "/karir", label: "Karir & Alumni" },
     { href: "/bantuan", label: "Pusat Bantuan" },
