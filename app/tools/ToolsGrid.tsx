@@ -115,28 +115,12 @@ const otherTools: Tool[] = [
     category: "Produktivitas"
   },
   {
-    title: "Konversi Dokumen",
-    description: "Konversi PDF, Word, Excel, PowerPoint",
-    href: "/tools/document-converter",
-    icon: FileSpreadsheet,
-    color: "from-red-600 to-rose-600",
-    category: "Konverter"
-  },
-  {
-    title: "Konversi Gambar",
-    description: "Konversi gambar PNG, JPG, WebP, GIF, BMP",
-    href: "/tools/image-converter",
-    icon: ImageIcon,
-    color: "from-pink-600 to-rose-600",
-    category: "Konverter"
-  },
-  {
     title: "Unit Converter",
     description: "Konversi panjang, berat, suhu, waktu, luas",
     href: "/tools/unit-converter",
     icon: ArrowRightLeft,
     color: "from-cyan-600 to-blue-600",
-    category: "Konverter"
+    category: "Matematika"
   },
   {
     title: "QR Code Generator",
@@ -198,7 +182,7 @@ const otherTools: Tool[] = [
 
 const allTools = [...importantTools, ...otherTools];
 
-const categories = ["Semua", "SMK-TKR", "SMK-TKJ", "SMA", "Produktivitas", "Akademik", "Konverter", "Text Tools", "Media", "Generator", "Games", "Matematika", "Sains"];
+const categories = ["Semua", "SMK-TKR", "SMK-TKJ", "SMA", "Produktivitas", "Akademik", "Text Tools", "Media", "Generator", "Games", "Matematika", "Sains"];
 
 interface ToolsGridProps {
   showImportant?: boolean;
