@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X, ChevronDown, GraduationCap, Phone, Mail, Users, Award } from "lucide-react";
+import { Sun, Moon, Menu, X, ChevronDown, GraduationCap, Phone, Mail, Users, Award, Wrench } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -133,6 +133,11 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
+
+              <Link href="/tools" className="relative group px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 uppercase tracking-widest">
+                <span className="relative z-10">Tools</span>
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+              </Link>
 
             </nav>
 
@@ -281,6 +286,11 @@ export default function Navbar() {
                   <Link href="/ppdb" onClick={() => setIsOpen(false)} className="py-2.5 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 uppercase tracking-widest">PPDB Online</Link>
                 </div>
               </div>
+
+              <Link href="/tools" onClick={() => setIsOpen(false)} className="flex items-center py-4 px-4 text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">
+                <Wrench className="w-5 h-5 mr-3 text-violet-600" />
+                Tools Siswa
+              </Link>
 
               <div className="flex items-center justify-between py-4 px-4 mt-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">Bahasa</span>

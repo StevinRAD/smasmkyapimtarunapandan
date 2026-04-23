@@ -1,5 +1,5 @@
-import MomenspesialContent from "./MomenspesialContent";
+import MomenSpesialContent from "./MomenSpesialContent";
 
 export default function MomenspesialPage() {
-  return <MomenspesialContent />;
+  return <MomenSpesialContent />;
 }

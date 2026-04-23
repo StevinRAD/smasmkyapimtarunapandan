@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 const prestasiImages = [
-  { src: "/galeri_nav/piala.jpg", alt: "Koleksi Piala", title: "Piala Kompetisi", description: "Koleksi prestasi sekolah" },
-  { src: "/galeri_nav/juara-1.jpg", alt: "Siswa Juara 1", title: "Juara 1", description: "Siswa peraih medali emas" },
-  { src: "/galeri_nav/juara-2.jpg", alt: "Siswa Juara 2", title: "Juara 2", description: "Siswa peraih medali perak" },
-  { src: "/galeri_nav/sertifikat.jpg", alt: "Sertifikat", title: "Sertifikat Prestasi", description: "Dokumentasi prestasi" },
-  { src: "/galeri_nav/medali.jpg", alt: "Medali", title: "Medali Emas", description: "Medali kompetisi" },
-  { src: "/galeri_nav/piagam.jpg", alt: "Piagam", title: "Piagam Penghargaan", description: "Penghargaan sekolah" }
+  { src: "/galeri/prestasi/piala.jpg", alt: "Koleksi Piala", title: "Piala Kompetisi", description: "Koleksi prestasi sekolah" },
+  { src: "/galeri/prestasi/juara-1.jpg", alt: "Siswa Juara 1", title: "Juara 1", description: "Siswa peraih medali emas" },
+  { src: "/galeri/prestasi/juara-2.jpg", alt: "Siswa Juara 2", title: "Juara 2", description: "Siswa peraih medali perak" },
+  { src: "/galeri/prestasi/sertifikat.jpg", alt: "Sertifikat", title: "Sertifikat Prestasi", description: "Dokumentasi prestasi" },
+  { src: "/galeri/prestasi/medali.jpg", alt: "Medali", title: "Medali Emas", description: "Medali kompetisi" },
+  { src: "/galeri/prestasi/piagam.jpg", alt: "Piagam", title: "Piagam Penghargaan", description: "Penghargaan sekolah" }
 ];
 
 export default function PrestasiContent() {

@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 const kesiswaanImages = [
-  { src: "/galeri_nav/upacara.jpg", alt: "Upacara Bendera", title: "Upacara Senin", description: "Upacara bendera Senin pagi" },
-  { src: "/galeri_nav/senam.jpg", alt: "Senam Pagi", title: "Senam Pagi", description: "Siswa dan guru senam bersama" },
-  { src: "/galeri_nav/osis.jpg", alt: "OSIS", title: "OSIS", description: "Pengurus OSIS" },
-  { src: "/galeri_nav/rapat-osis.jpg", alt: "Rapat OSIS", title: "Rapat OSIS", description: "Rapat pengurus OSIS" },
-  { src: "/galeri_nav/jadwal.jpg", alt: "Jadwal Pelajaran", title: "Jadwal", description: "Papan informasi akademik" },
-  { src: "/galeri_nav/pengumuman.jpg", alt: "Papan Pengumuman", title: "Pengumuman", description: "Info kegiatan sekolah" }
+  { src: "/galeri/kesiswaan/upacara.jpg", alt: "Upacara Bendera", title: "Upacara Senin", description: "Upacara bendera Senin pagi" },
+  { src: "/galeri/kesiswaan/senam.jpg", alt: "Senam Pagi", title: "Senam Pagi", description: "Siswa dan guru senam bersama" },
+  { src: "/galeri/kesiswaan/osis.jpg", alt: "OSIS", title: "OSIS", description: "Pengurus OSIS" },
+  { src: "/galeri/kesiswaan/rapat-osis.jpg", alt: "Rapat OSIS", title: "Rapat OSIS", description: "Rapat pengurus OSIS" },
+  { src: "/galeri/kesiswaan/jadwal.jpg", alt: "Jadwal Pelajaran", title: "Jadwal", description: "Papan informasi akademik" },
+  { src: "/galeri/kesiswaan/pengumuman.jpg", alt: "Papan Pengumuman", title: "Pengumuman", description: "Info kegiatan sekolah" }
 ];
 
 export default function KesiswaanContent() {

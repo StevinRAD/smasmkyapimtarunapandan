@@ -1,19 +1,19 @@
 # 📸 Galeri Sekolah YAPIM
 
 ## 📂 Lokasi File
-Semua foto galeri diletakkan di folder: `public/galeri_nav/`
+Semua foto galeri diletakkan di folder: `public/galeri/`
 
 ---
 
 ## 🎯 Cara Menggunakan
 
-1. **Siapkan Foto** - Ambil atau siapkan 41 foto sesuai kategori
-2. **Simpan Foto** - Letakkan di folder `public/galeri_nav/` dengan nama yang sesuai
+1. **Siapkan Foto** - Ambil atau siapkan 59 foto sesuai kategori
+2. **Simpan Foto** - Letakkan di folder `public/galeri/` dengan nama yang sesuai
 3. **Selesai** - Galeri otomatis terupdate!
 
 ---
 
-## 📋 Daftar Foto yang Diperlukan (41 Foto)
+## 📋 Daftar Foto yang Diperlukan (47 Foto)
 
 ### 🏫 Fasilitas (9 foto)
 ```
@@ -53,6 +53,22 @@ wisuda.jpg                  hut-yapim.jpg               ppdb.jpg
 kunjungan.jpg               rapor.jpg                   pelepasan.jpg
 ```
 
+### 💼 Pemberangkatan PKL TKR-TKJ (3 foto)
+```
+pkl-tkr.jpg                 pkl-tkj.jpg                 pemberangkatan-pkl.jpg
+```
+
+### 👨‍🏫 Guru & Staff (3 foto)
+```
+foto-bersama.jpg             rapat-guru.jpg               foto-ramai.jpg
+```
+
+### 🏫 Kehidupan Sekolah (6 foto)
+```
+sekolah-harian.jpg          istirahat.jpg                kantin-siswa.jpg
+perpustakaan-aktivitas.jpg  kepulangan.jpg               olahraga.jpg
+```
+
 ---
 
 ## 💡 Tips Pengambilan Foto
@@ -66,23 +82,26 @@ kunjungan.jpg               rapor.jpg                   pelepasan.jpg
 
 ## 🔗 Navigasi Galeri
 
-- **Utama**: `/galeri` - Pilihan kategori
+- **Utama**: `/galeri` - Pilihan 9 kategori
 - **Fasilitas**: `/galeri/fasilitas`
 - **Kegiatan Belajar**: `/galeri/kegiatan-belajar`
 - **Ekstrakurikuler**: `/galeri/ekstrakurikuler`
 - **Prestasi**: `/galeri/prestasi`
 - **Kegiatan Kesiswaan**: `/galeri/kesiswaan`
 - **Momen Spesial**: `/galeri/momen-spesial`
+- **Pemberangkatan PKL**: `/galeri/pemberangkatan-pkl`
+- **Guru & Staff**: `/galeri/guru-staff`
+- **Kehidupan Sekolah**: `/galeri/kehidupan-sekolah`
 
 ---
 
 ## ✅ Checklist Persiapan
 
-- [ ] Siapkan 41 foto sesuai daftar
+- [ ] Siapkan 47 foto sesuai daftar
 - [ ] Pastikan nama file sesuai dengan daftar di atas
-- [ ] Simpan semua foto di `public/galeri_nav/`
+- [ ] Simpan semua foto di `public/galeri/`
 - [ ] Background galeri di `public/galeri/galeri_bg.jpg`
-- [ ] Test semua halaman kategori
+- [ ] Test semua 9 halaman kategori
 
 ---
 

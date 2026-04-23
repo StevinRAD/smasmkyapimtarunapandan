@@ -213,7 +213,7 @@
 
   /* Professional Card Styles */
   .card-elevated {
-    @apply bg-white dark:bg-slate-900 rounded-xl shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/60 dark:hover:shadow-slate-900/60;
+    @apply bg-white dark:bg-slate-900 rounded-xl shadow-xl shadow-slate-300/60 dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-400/60 dark:hover:shadow-slate-900/60;
   }
 
   .card-bordered {
