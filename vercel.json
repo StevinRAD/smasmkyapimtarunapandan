@@ -1,6 +1,6 @@
 {
   "buildCommand": "next build --turbo",
-  "installCommand": "npm install",
+  "installCommand": "npm ci --prefer-offline",
   "framework": "nextjs",
   "regions": ["sin1"],
   "git": {

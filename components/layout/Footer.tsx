@@ -45,7 +45,6 @@ export default function Footer() {
     { href: "/galeri", label: "Galeri Sekolah" },
     { href: "/berita", label: "Pusat Berita" },
     { href: "/karir", label: "Karir & Alumni" },
-    { href: "/tools", label: "Tools & Utilities" },
     { href: "/bantuan", label: "Pusat Bantuan" },
   ];
 
@@ -254,7 +253,6 @@ export default function Footer() {
               </span>
               <Link href="/privacy" className="hover:text-blue-400 transition-colors">Kebijakan Privasi</Link>
               <Link href="/terms" className="hover:text-blue-400 transition-colors">Syarat & Ketentuan</Link>
-              <Link href="/tools/compress-image" className="hover:text-blue-400 transition-colors">Kompres Gambar</Link>
             </div>
           </div>
         </div>
