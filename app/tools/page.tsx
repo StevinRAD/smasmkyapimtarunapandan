@@ -34,10 +34,10 @@ export default function ToolsPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6">
-              Tools Tersedia
+              Tools Pembelajaran
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
-              Semua tools gratis dan siap digunakan - Tidak perlu instalasi, data tidak disimpan di server
+              Temukan tools berdasarkan kebutuhan belajar Anda - untuk belajar, mengerjakan tugas, praktikum, dan persiapan ujian
             </p>
           </div>
 

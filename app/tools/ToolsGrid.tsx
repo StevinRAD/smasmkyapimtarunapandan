@@ -37,68 +37,66 @@ const iconMap = {
 
 // Tools Penting (SMK/SMA) - di posisi teratas
 const importantTools: Tool[] = [
-  // SMK - TKR
+  // Praktikum & Skill
   {
     title: "Kalkulator CC Mesin",
-    description: "Hitung kapasitas silinder mesin untuk TKR",
+    description: "Hitung kapasitas silinder mesin untuk praktikum TKR",
     href: "/tools/engine-cc",
     icon: Wrench,
     color: "from-orange-600 to-red-600",
-    category: "SMK-TKR",
+    category: "Praktikum & Skill",
     important: true,
     badge: "TKR"
   },
-  // SMK - TKJ
   {
     title: "Kalkulator Subnet",
-    description: "Hitung subnet mask dan IP range untuk TKJ",
+    description: "Hitung subnet mask dan IP range untuk praktikum TKJ",
     href: "/tools/subnet-calculator",
     icon: Network,
     color: "from-blue-600 to-indigo-600",
-    category: "SMK-TKJ",
+    category: "Praktikum & Skill",
     important: true,
     badge: "TKJ"
   },
   {
     title: "Pengenalan Komputer",
-    description: "Belajar hardware dan komponen komputer untuk TKJ",
+    description: "Belajar hardware dan komponen komputer",
     href: "/tools/computer-basics",
     icon: Monitor,
     color: "from-cyan-600 to-blue-600",
-    category: "SMK-TKJ",
+    category: "Praktikum & Skill",
     important: true,
     badge: "TKJ"
   },
-  // SMA - Fisika
   {
     title: "Kalkulator Fisika",
     description: "Hitung rumus fisika: kecepatan, gaya, energi",
     href: "/tools/physics-calculator",
     icon: Zap,
     color: "from-emerald-600 to-teal-600",
-    category: "SMA",
+    category: "Mengerjakan Tugas",
     important: true,
     badge: "Fisika"
   },
-  // SMA - Umum
+  // Persiapan Ujian
   {
     title: "Kalkulator Siswa",
     description: "Hitung nilai rapor, IPS, IPK, dan predikat",
     href: "/tools/student-calculator",
     icon: Calculator,
     color: "from-violet-600 to-purple-600",
-    category: "SMA",
+    category: "Persiapan Ujian",
     important: true,
-    badge: "SMA"
+    badge: "Nilai"
   },
-  // SMA - Kimia
+  // Referensi & Akses
   {
     title: "Tabel Periodik",
     description: "Referensi 118 unsur kimia untuk pembelajaran",
     href: "/tools/periodic-table",
     icon: Atom,
     color: "from-teal-600 to-cyan-600",
-    category: "Sains",
+    category: "Referensi & Akses",
     important: true,
     badge: "Kimia"
   },
@@ -112,7 +110,7 @@ const otherTools: Tool[] = [
     href: "/tools/study-timer",
     icon: Clock,
     color: "from-rose-600 to-pink-600",
-    category: "Produktivitas"
+    category: "Produktivitas Belajar"
   },
   {
     title: "Unit Converter",
@@ -120,7 +118,7 @@ const otherTools: Tool[] = [
     href: "/tools/unit-converter",
     icon: ArrowRightLeft,
     color: "from-cyan-600 to-blue-600",
-    category: "Matematika"
+    category: "Mengerjakan Tugas"
   },
   {
     title: "QR Code Generator",
@@ -128,7 +126,7 @@ const otherTools: Tool[] = [
     href: "/tools/qr-code",
     icon: QrCode,
     color: "from-indigo-600 to-purple-600",
-    category: "Generator"
+    category: "Referensi & Akses"
   },
   {
     title: "Word Counter",
@@ -136,7 +134,7 @@ const otherTools: Tool[] = [
     href: "/tools/word-counter",
     icon: Type,
     color: "from-amber-600 to-orange-600",
-    category: "Text Tools"
+    category: "Mengerjakan Tugas"
   },
   {
     title: "Random Picker",
@@ -144,7 +142,7 @@ const otherTools: Tool[] = [
     href: "/tools/random-picker",
     icon: Shuffle,
     color: "from-fuchsia-600 to-pink-600",
-    category: "Games"
+    category: "Belajar & Menghafal"
   },
   {
     title: "Kalkulator Persen",
@@ -152,7 +150,7 @@ const otherTools: Tool[] = [
     href: "/tools/percentage-calculator",
     icon: Percent,
     color: "from-green-600 to-emerald-600",
-    category: "Matematika"
+    category: "Mengerjakan Tugas"
   },
   {
     title: "Speed Reader",
@@ -160,7 +158,7 @@ const otherTools: Tool[] = [
     href: "/tools/speed-reader",
     icon: Zap,
     color: "from-sky-600 to-blue-600",
-    category: "Produktivitas"
+    category: "Belajar & Menghafal"
   },
   {
     title: "To-Do List",
@@ -168,7 +166,7 @@ const otherTools: Tool[] = [
     href: "/tools/todo-list",
     icon: ListTodo,
     color: "from-violet-600 to-purple-600",
-    category: "Produktivitas"
+    category: "Produktivitas Belajar"
   },
   {
     title: "Kompres Gambar",
@@ -176,13 +174,21 @@ const otherTools: Tool[] = [
     href: "/tools/compress-image",
     icon: Image,
     color: "from-violet-600 to-purple-600",
-    category: "Media"
+    category: "Mengerjakan Tugas"
   },
 ];
 
 const allTools = [...importantTools, ...otherTools];
 
-const categories = ["Semua", "SMK-TKR", "SMK-TKJ", "SMA", "Produktivitas", "Akademik", "Text Tools", "Media", "Generator", "Games", "Matematika", "Sains"];
+const categories = [
+  "Semua",
+  "Belajar & Menghafal",
+  "Mengerjakan Tugas",
+  "Persiapan Ujian",
+  "Praktikum & Skill",
+  "Produktivitas Belajar",
+  "Referensi & Akses"
+];
 
 interface ToolsGridProps {
   showImportant?: boolean;
@@ -230,7 +236,7 @@ export default function ToolsGrid({ showImportant = true, showOthers = true }: T
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent flex-1"></div>
             <h2 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-purple-600">
-              🔥 Tools Penting
+              🎓 Tools Pembelajaran
             </h2>
             <div className="h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent flex-1"></div>
           </div>
