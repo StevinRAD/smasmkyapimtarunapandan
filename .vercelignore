@@ -1,0 +1,19 @@
+# Development files
+.next
+tsconfig.tsbuildinfo
+*.log
+
+# Scripts and tools
+check-images.js
+compress-images.js
+test-*.pdf
+
+# Claude files
+.claude
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md

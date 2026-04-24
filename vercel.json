@@ -1,6 +1,6 @@
 {
-  "buildCommand": "next build --turbo",
-  "installCommand": "npm ci --prefer-offline",
+  "buildCommand": "next build",
+  "installCommand": "npm ci --prefer-offline --no-audit --no-fund",
   "framework": "nextjs",
   "regions": ["sin1"],
   "git": {
@@ -10,7 +10,8 @@
   },
   "build": {
     "env": {
-      "NEXT_TELEMETRY_DISABLED": "1"
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "NODE_OPTIONS": "--max-old-space-size=4096"
     }
   }
 }

@@ -3,7 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
-    qualities: [100, 75],
+  },
+  // Optimize build untuk Vercel
+  output: 'standalone',
+  // Reduce build time
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 };
 
