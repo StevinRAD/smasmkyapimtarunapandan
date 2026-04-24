@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     qualities: [100, 75],
   },
-  experimental: {
-    turbo: {},
-  },
 };
 
 export default nextConfig;
