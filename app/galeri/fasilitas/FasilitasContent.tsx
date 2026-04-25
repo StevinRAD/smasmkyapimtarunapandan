@@ -7,15 +7,15 @@ import Link from "next/link";
 import { useState } from "react";
 
 const facilitiesImages = [
-  { src: "/galeri_nav/sekolah-gedung.jpg", alt: "Gedung Sekolah YAPIM", title: "Gedung Sekolah", description: "Tampak depan gedung YAPIM yang megah" },
-  { src: "/galeri_nav/kelas-aktif.jpg", alt: "Ruang Kelas", title: "Ruang Kelas", description: "Kelas nyaman dengan AC dan proyektor" },
-  { src: "/galeri_nav/lab-komputer.jpg", alt: "Laboratorium Komputer", title: "Lab Komputer", description: "Fasilitas komputer modern" },
-  { src: "/galeri_nav/perpustakaan.jpg", alt: "Perpustakaan Digital", title: "Perpustakaan", description: "Koleksi buku lengkap dan digital" },
-  { src: "/galeri_nav/lapangan-olahraga.jpg", alt: "Lapangan Olahraga", title: "Lapangan Olahraga", description: "Sarana olahraga lengkap" },
-  { src: "/galeri_nav/aula-serbaguna.jpg", alt: "Aula Serbaguna", title: "Aula Serbaguna", description: "Aula untuk acara penting" },
-  { src: "/galeri_nav/musholla.jpg", alt: "Musholla", title: "Musholla", description: "Tempat ibadah yang nyaman" },
-  { src: "/galeri_nav/kantin.jpg", alt: "Kantin Sehat", title: "Kantin", description: "Kantin dengan menu bergizi" },
-  { src: "/galeri_nav/uks.jpg", alt: "Unit Kesehatan Sekolah", title: "UKS", description: "Unit kesehatan sekolah" }
+  { src: "/galeri/fasilitas/sekolah-gedung.jpg", alt: "Gedung Sekolah YAPIM", title: "Gedung Sekolah", description: "Tampak depan gedung YAPIM yang megah" },
+  { src: "/galeri/fasilitas/kelas-aktif.jpg", alt: "Ruang Kelas", title: "Ruang Kelas", description: "Kelas nyaman dengan AC dan proyektor" },
+  { src: "/galeri/fasilitas/lab-komputer.jpg", alt: "Laboratorium Komputer", title: "Lab Komputer", description: "Fasilitas komputer modern" },
+  { src: "/galeri/fasilitas/perpustakaan.jpg", alt: "Perpustakaan Digital", title: "Perpustakaan", description: "Koleksi buku lengkap dan digital" },
+  { src: "/galeri/fasilitas/lapangan-olahraga.jpg", alt: "Lapangan Olahraga", title: "Lapangan Olahraga", description: "Sarana olahraga lengkap" },
+  { src: "/galeri/fasilitas/aula-serbaguna.jpg", alt: "Aula Serbaguna", title: "Aula Serbaguna", description: "Aula untuk acara penting" },
+  { src: "/galeri/fasilitas/musholla.jpg", alt: "Musholla", title: "Musholla", description: "Tempat ibadah yang nyaman" },
+  { src: "/galeri/fasilitas/kantin.jpg", alt: "Kantin Sehat", title: "Kantin", description: "Kantin dengan menu bergizi" },
+  { src: "/galeri/fasilitas/uks.jpg", alt: "Unit Kesehatan Sekolah", title: "UKS", description: "Unit kesehatan sekolah" }
 ];
 
 export default function FasilitasContent() {

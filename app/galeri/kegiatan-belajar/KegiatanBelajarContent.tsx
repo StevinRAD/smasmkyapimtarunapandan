@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 const kegiatanBelajarImages = [
-  { src: "/galeri_nav/siswa-belajar.jpg", alt: "Siswa Belajar", title: "Belajar di Kelas", description: "Suasana kelas yang kondusif" },
-  { src: "/galeri_nav/praktikum.jpg", alt: "Praktikum IPA", title: "Praktikum", description: "Siswa melakukan eksperimen" },
-  { src: "/galeri_nav/diskusi.jpg", alt: "Diskusi Kelompok", title: "Diskusi Kelompok", description: "Siswa berdiskusi aktif" },
-  { src: "/galeri_nav/presentasi.jpg", alt: "Presentasi Siswa", title: "Presentasi", description: "Siswa mempresentasikan tugas" },
-  { src: "/galeri_nav/guru-mengajar.jpg", alt: "Guru Mengajar", title: "Guru Profesional", description: "Guru di kelas" },
-  { src: "/galeri_nav/tugas-kelompok.jpg", alt: "Tugas Kelompok", title: "Kerja Kelompok", description: "Kolaborasi siswa" }
+  { src: "/galeri/kegiatanbelajar/siswa-belajar.jpg", alt: "Siswa Belajar", title: "Belajar di Kelas", description: "Suasana kelas yang kondusif" },
+  { src: "/galeri/kegiatanbelajar/praktikum.jpg", alt: "Praktikum IPA", title: "Praktikum", description: "Siswa melakukan eksperimen" },
+  { src: "/galeri/kegiatanbelajar/diskusi.jpg", alt: "Diskusi Kelompok", title: "Diskusi Kelompok", description: "Siswa berdiskusi aktif" },
+  { src: "/galeri/kegiatanbelajar/presentasi.jpg", alt: "Presentasi Siswa", title: "Presentasi", description: "Siswa mempresentasikan tugas" },
+  { src: "/galeri/kegiatanbelajar/guru-mengajar.jpg", alt: "Guru Mengajar", title: "Guru Profesional", description: "Guru di kelas" },
+  { src: "/galeri/kegiatanbelajar/tugas-kelompok.jpg", alt: "Tugas Kelompok", title: "Kerja Kelompok", description: "Kolaborasi siswa" }
 ];
 
 export default function KegiatanBelajarContent() {

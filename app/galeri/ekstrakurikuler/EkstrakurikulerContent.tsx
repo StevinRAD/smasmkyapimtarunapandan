@@ -7,14 +7,14 @@ import Link from "next/link";
 import { useState } from "react";
 
 const ekstrakurikulerImages = [
-  { src: "/galeri_nav/pramuka.jpg", alt: "Kegiatan Pramuka", title: "Pramuka", description: "Kegiatan kepramukaan" },
-  { src: "/galeri_nav/paskibra.jpg", alt: "Paskibra", title: "Paskibra", description: "Latihan baris-berbaris" },
-  { src: "/galeri_nav/pmr.jpg", alt: "PMR", title: "PMR", description: "Latihan pertolongan pertama" },
-  { src: "/galeri_nav/basket.jpg", alt: "Tim Basket", title: "Basket", description: "Tim basket sekolah" },
-  { src: "/galeri_nav/futsal.jpg", alt: "Tim Futsal", title: "Futsal", description: "Tim futsal sekolah" },
-  { src: "/galeri_nav/tari.jpg", alt: "Tari Tradisional", title: "Seni Tari", description: "Ekstrakurikuler tari" },
-  { src: "/galeri_nav/paduan-suara.jpg", alt: "Paduan Suara", title: "Paduan Suara", description: "Ekstrakurikuler musik" },
-  { src: "/galeri_nav/rohis.jpg", alt: "Rohis", title: "Rohis", description: "Kegiatan keagamaan" }
+  { src: "/galeri/ekstrakurikuler/pramuka.jpg", alt: "Kegiatan Pramuka", title: "Pramuka", description: "Kegiatan kepramukaan" },
+  { src: "/galeri/ekstrakurikuler/paskibra.jpg", alt: "Paskibra", title: "Paskibra", description: "Latihan baris-berbaris" },
+  { src: "/galeri/ekstrakurikuler/pmr.jpg", alt: "PMR", title: "PMR", description: "Latihan pertolongan pertama" },
+  { src: "/galeri/ekstrakurikuler/basket.jpg", alt: "Tim Basket", title: "Basket", description: "Tim basket sekolah" },
+  { src: "/galeri/ekstrakurikuler/futsal.jpg", alt: "Tim Futsal", title: "Futsal", description: "Tim futsal sekolah" },
+  { src: "/galeri/ekstrakurikuler/tari.jpg", alt: "Tari Tradisional", title: "Seni Tari", description: "Ekstrakurikuler tari" },
+  { src: "/galeri/ekstrakurikuler/paduan-suara.jpg", alt: "Paduan Suara", title: "Paduan Suara", description: "Ekstrakurikuler musik" },
+  { src: "/galeri/ekstrakurikuler/rohis.jpg", alt: "Rohis", title: "Rohis", description: "Kegiatan keagamaan" }
 ];
 
 export default function EkstrakurikulerContent() {
