@@ -26,18 +26,9 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased min-h-screen flex flex-col relative`}>
-        {/* Kontainer Background Global */}
-        <div className="fixed inset-0 -z-50 w-full h-full">
-          <Image
-            src="/background.jpg"
-            alt="Latar Belakang Website"
-            fill
-            priority
-            className="object-cover transition-opacity duration-1000 opacity-100 dark:opacity-70"
-          />
-          {/* Subtle Overlay to ensure readability while keeping background visible */}
-          <div className="absolute inset-0 bg-white/60 dark:bg-slate-950/80 backdrop-blur-[1px]" />
-        </div>
+        {/* Background Global dengan CSS gradient (lebih cepat & reliable) */}
+        <div className="fixed inset-0 -z-50 bg-gradient-to-br from-slate-50 via-blue-50 to-violet-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
+        <div className="fixed inset-0 -z-40 bg-white/40 dark:bg-slate-950/60 backdrop-blur-[1px]" />
 
         <LanguageProvider>
           <ThemeProvider

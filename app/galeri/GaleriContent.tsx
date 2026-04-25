@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { School, Users, Trophy, Calendar, Sparkles, Image as ImageIcon, ArrowRight } from "lucide-react";
+import { School, Users, Trophy, Calendar, Sparkles, Image as ImageIcon, ArrowRight, Briefcase, GraduationCap, Coffee } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ const galleryCategories = [
     description: "Gedung, kelas, lab, dan fasilitas penunjang lainnya",
     count: "9 Foto",
     href: "/galeri/fasilitas",
-    preview: "/galeri_nav/sekolah-gedung.jpg"
+    preview: "/galeri/sekolah-gedung.jpg"
   },
   {
     id: "kegiatan-belajar",
@@ -24,7 +24,7 @@ const galleryCategories = [
     description: "Suasana belajar yang kondusif dan interaktif",
     count: "6 Foto",
     href: "/galeri/kegiatan-belajar",
-    preview: "/galeri_nav/siswa-belajar.jpg"
+    preview: "/galeri/siswa-belajar.jpg"
   },
   {
     id: "ekstrakurikuler",
@@ -34,7 +34,7 @@ const galleryCategories = [
     description: "Kegiatan pengembangan bakat dan minat siswa",
     count: "8 Foto",
     href: "/galeri/ekstrakurikuler",
-    preview: "/galeri_nav/pramuka.jpg"
+    preview: "/galeri/ekstra.jpg"
   },
   {
     id: "prestasi",
@@ -44,7 +44,7 @@ const galleryCategories = [
     description: "Pencapaian siswa dan sekolah di berbagai kompetisi",
     count: "6 Foto",
     href: "/galeri/prestasi",
-    preview: "/galeri_nav/piala.jpg"
+    preview: "/galeri/piala.jpg"
   },
   {
     id: "kesiswaan",
@@ -54,7 +54,7 @@ const galleryCategories = [
     description: "Kegiatan OSIS, upacara, dan event kesiswaan",
     count: "6 Foto",
     href: "/galeri/kesiswaan",
-    preview: "/galeri_nav/upacara.jpg"
+    preview: "/galeri/upacara.jpg"
   },
   {
     id: "momen-spesial",
@@ -64,7 +64,37 @@ const galleryCategories = [
     description: "Wisuda, HUT YAPIM, dan momen berharga lainnya",
     count: "6 Foto",
     href: "/galeri/momen-spesial",
-    preview: "/galeri_nav/wisuda.jpg"
+    preview: "/galeri/momen.jpg"
+  },
+  {
+    id: "pemberangkatan-pkl",
+    name: "Pemberangkatan PKL TKR-TKJ",
+    icon: Briefcase,
+    color: "indigo",
+    description: "Siswa TKR dan TKJ saat praktik kerja lapangan",
+    count: "3 Foto",
+    href: "/galeri/pemberangkatan-pkl",
+    preview: "/galeri/pkl-tkr.jpg"
+  },
+  {
+    id: "guru-staff",
+    name: "Guru & Staff",
+    icon: GraduationCap,
+    color: "teal",
+    description: "Tenaga pendidik profesional dan staf administratif",
+    count: "3 Foto",
+    href: "/galeri/guru-staff",
+    preview: "/galeri/guru.jpg"
+  },
+  {
+    id: "kehidupan-sekolah",
+    name: "Kehidupan Sekolah",
+    icon: Coffee,
+    color: "orange",
+    description: "Aktivitas dan suasana sehari-hari di sekolah",
+    count: "6 Foto",
+    href: "/galeri/kehidupan-sekolah",
+    preview: "/galeri/sekolah-harian.jpg"
   }
 ];
 
@@ -115,11 +145,11 @@ export default function GaleriContent() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-black mb-2">41</div>
+              <div className="text-4xl md:text-5xl font-black mb-2">47</div>
               <div className="text-purple-200 text-sm uppercase tracking-widest">Total Foto</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-black mb-2">6</div>
+              <div className="text-4xl md:text-5xl font-black mb-2">9</div>
               <div className="text-purple-200 text-sm uppercase tracking-widest">Kategori</div>
             </div>
             <div>

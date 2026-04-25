@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X, ChevronDown, GraduationCap, Phone, Mail, Users, Award } from "lucide-react";
+import { Sun, Moon, Menu, X, ChevronDown, GraduationCap, Phone, Mail, Users, Award, Wrench } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {

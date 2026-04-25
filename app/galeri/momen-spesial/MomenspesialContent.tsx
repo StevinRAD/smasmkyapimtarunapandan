@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 const momenspesialImages = [
-  { src: "/galeri_nav/wisuda.jpg", alt: "Wisuda", title: "Wisuda", description: "Pelepasan siswa kelas XII" },
-  { src: "/galeri_nav/hut-yapim.jpg", alt: "HUT YAPIM", title: "HUT YAPIM", description: "Perayaan ulang tahun sekolah" },
-  { src: "/galeri_nav/ppdb.jpg", alt: "PPDB", title: "PPDB", description: "Pendaftaran siswa baru" },
-  { src: "/galeri_nav/kunjungan.jpg", alt: "Kunjungan Dinas", title: "Kunjungan", description: "Tamu penting sekolah" },
-  { src: "/galeri_nav/rapor.jpg", alt: "Penerimaan Rapor", title: "Rapor", description: "Orang tua ambil rapor" },
-  { src: "/galeri_nav/pelepasan.jpg", alt: "Pelepasan", title: "Pelepasan", description: "Momen pelepasan siswa" }
+  { src: "/galeri/momenspesial/wisuda.jpg", alt: "Wisuda", title: "Wisuda", description: "Pelepasan siswa kelas XII" },
+  { src: "/galeri/momenspesial/hut-yapim.jpg", alt: "HUT YAPIM", title: "HUT YAPIM", description: "Perayaan ulang tahun sekolah" },
+  { src: "/galeri/momenspesial/ppdb.jpg", alt: "PPDB", title: "PPDB", description: "Pendaftaran siswa baru" },
+  { src: "/galeri/momenspesial/kunjungan.jpg", alt: "Kunjungan Dinas", title: "Kunjungan", description: "Tamu penting sekolah" },
+  { src: "/galeri/momenspesial/rapor.jpg", alt: "Penerimaan Rapor", title: "Rapor", description: "Orang tua ambil rapor" },
+  { src: "/galeri/momenspesial/pelepasan.jpg", alt: "Pelepasan", title: "Pelepasan", description: "Momen pelepasan siswa" }
 ];
 
 export default function MomenspesialContent() {
